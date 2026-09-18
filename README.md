@@ -1,1 +1,212 @@
 # paraximena
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para la niña que me gusta</title>
+
+<!-- Nuevas fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:linear-gradient(135deg,#ffd6e8,#ffc2dd);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:'Cormorant Garamond', serif;
+}
+
+/* Corazón */
+.corazon{
+    position:relative;
+    width:400px;
+    height:360px;
+    background:#ff4d94;
+    transform:rotate(-45deg);
+    border-radius:20px;
+    box-shadow:0 25px 50px rgba(0,0,0,0.2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.corazon::before,
+.corazon::after{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:360px;
+    background:#ff4d94;
+    border-radius:50%;
+    z-index:0;
+}
+
+.corazon::before{
+    top:-200px;
+    left:0;
+}
+
+.corazon::after{
+    left:200px;
+    top:0;
+}
+
+.contenido{
+    position:relative;
+    z-index:2;
+    transform:rotate(45deg);
+    width:75%;
+    text-align:center;
+    color:white;
+}
+
+/* Título más romántico */
+h1{
+    margin-bottom:15px;
+    font-family:'Great Vibes', cursive;
+    font-size:42px;
+    letter-spacing:1px;
+    text-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Texto más elegante */
+p{
+    font-size:18px;
+    line-height:1.7;
+    font-weight:500;
+    text-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Botones */
+button{
+    background:#b30059;
+    color:white;
+    border:none;
+    padding:8px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    margin-top:15px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:16px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#99004d;
+}
+
+.link-btn{
+    background:white;
+    color:#b30059;
+    margin-top:10px;
+}
+
+.link-btn:hover{
+    background:#ffe6f0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="corazon">
+<div class="contenido">
+
+<h1 id="titulo">Hola niña bonita</h1>
+
+<p id="mensaje">
+No soy experto diciendo estas cosas,<br>
+pero esta vez quise hacerlo diferente.<br>
+Así que te hice esta pequeña página…<br>
+solo para ti.
+</p>
+
+<div id="botonMusica" style="display:none;">
+    <a href="https://youtu.be/f530BS-3OVo?si=fmJW70iOOH7oSNZU" target="_blank">
+        <button class="link-btn">Escucha la canción ♡</button>
+    </a>
+</div>
+
+<button id="btnSiguiente">Siguiente ♡</button>
+<button id="btnReiniciar" style="display:none;">Volver a empezar ♡</button>
+
+</div>
+</div>
+
+<script>
+
+let paso = 1;
+
+document.getElementById("btnSiguiente")
+        .addEventListener("click", siguiente);
+
+document.getElementById("btnReiniciar")
+        .addEventListener("click", reiniciar);
+
+function siguiente(){
+
+    if(paso === 1){
+
+        document.getElementById("titulo").style.display = "none";
+
+        document.getElementById("mensaje").innerHTML =
+        "Hola Ximena, hay canciones que cambian cuando conoces a alguien...<br>\
+        y nose porque pero esta cancion me hace pensar en ti.<br>\
+        Quiero expresar lo que siento, <br>\
+        y esta cancion demuestra eso.<br><br>\
+        Te la dejo aquí para que la escuches.
+        Me haces volver a la secundaria";
+
+        document.getElementById("botonMusica").style.display="block";
+    }
+
+    else if(paso === 2){
+        document.getElementById("mensaje").innerHTML =
+        "Quizá algunas personas no llegan para quedarse.<br>\
+        Y aunque el tiempo cambie muchas cosas,<br>\
+        hay sentimientos que siguen encontrando la manera de quedarse.<br>\
+        <br>\
+        Tal vez por eso esta canción me hace pensar tanto en ti.<br>\
+        Porque, al final...me gustas.";
+
+        document.getElementById("botonMusica").style.display="none";
+    }
+
+    else if(paso === 3){
+        document.getElementById("mensaje").innerHTML =
+        "Y si es cierto, como dice la cancion
+        me gustas y demasiando. ojala me des la oportunidad de conocerte y viceversa.❤️";
+
+        document.getElementById("btnSiguiente").style.display="none";
+        document.getElementById("btnReiniciar").style.display="inline-block";
+    }
+
+    paso++;
+}
+
+function reiniciar(){
+    paso = 1;
+
+    document.getElementById("titulo").style.display = "block";
+    document.getElementById("mensaje").innerHTML =
+    "No soy experto diciendo estas cosas,<br>\
+    pero esta vez quise hacerlo diferente.<br>\
+    Así que te hice esta pequeña página…<br>\
+    solo para ti.";
+
+    document.getElementById("btnSiguiente").style.display="inline-block";
+    document.getElementById("btnReiniciar").style.display="none";
+    document.getElementById("botonMusica").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
